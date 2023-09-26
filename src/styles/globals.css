@@ -17,3 +17,24 @@ body {
   position: relative;
   overflow-x: hidden;
 }
+
+/* Track */
+::-webkit-scrollbar {
+  width: 5px; /* Width of the scrollbar track */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #13ce66; /* Color of the scrollbar thumb */
+  border-radius: 5px; /* Rounded corners for the thumb */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #0f9c4f; /* Color of the scrollbar thumb on hover */
+}
+
+/* Track when the scrollbar is active (being dragged) */
+::-webkit-scrollbar-thumb:active {
+  background: #17ee78; /* Color of the scrollbar thumb when active */
+}

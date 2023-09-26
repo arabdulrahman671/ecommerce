@@ -5,15 +5,16 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/solid";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { useMediaQuery } from "react-responsive";
 export const FeaturedProducts = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 3,
+    slidesToShow: isMobile ? 1 : 3,
     slidesToScroll: 1,
     autoplay: false,
-    speed: 1500,
+    speed: 500,
     autoplaySpeed: 3000,
     arrows: true,
     cssEase: "linear",

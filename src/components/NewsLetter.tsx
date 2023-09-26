@@ -3,7 +3,7 @@ import React from "react";
 
 export const NewsLetter = () => {
   return (
-    <div className="bg-blue-gray-900  flex flex-col justify-center py-20 items-center ">
+    <div className="bg-blue-gray-900  flex flex-col justify-center py-20 items-center flex-wrap">
       <div>
         <Typography className="text-white font-extralight text-center text-md mb-3">
           Stay Up to date with our new offers
@@ -12,7 +12,7 @@ export const NewsLetter = () => {
           Subscribe to our News Letter
         </Typography>
       </div>
-      <div className="space-x-5 mt-5 flex">
+      <div className="space-x-5 mt-5 flex  flex-wrap">
         <input
           className="rounded-full p-3 px-5 w-72"
           placeholder="youremail@email.com"

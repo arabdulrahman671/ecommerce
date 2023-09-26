@@ -6,6 +6,7 @@ import { TopBanner } from "@/components/TopBanner";
 import { CategoriesTray } from "@/components/CategoriesTray";
 import { FeaturedProducts } from "@/components/FeaturedProducts";
 import { NewsLetter } from "@/components/NewsLetter";
+import { Reviews } from "@/components/Reviews";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +15,11 @@ export default function Home() {
     <Layout>
       <TopBanner />
       {/* <div className="w-full flex-col"> */}
-      <div className="md:w-[1024px] ml-auto mr-auto relative mb-10">
+      <div className="md:max-w-[1024px]  relative mb-10 md:mx-auto">
+        {/* <div className="md:max-w-[1024px] ml-auto mr-auto relative mb-10"> */}
         <CategoriesTray />
         <FeaturedProducts />
+        <Reviews />
       </div>
       <NewsLetter />
       <div className="my-96"></div>

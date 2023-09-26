@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Image from "next/image";
 import { Typography } from "@material-tailwind/react";
 import Slider from "react-slick";
-
+import { useMediaQuery } from "react-responsive";
 interface Slide {
   uri: string;
   title: string;
@@ -30,10 +30,11 @@ const Slide = ({ uri, title }: Slide) => {
 };
 
 export const CategoriesTray = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 6,
+    slidesToShow: isMobile ? 3 : 6,
     slidesToScroll: 1,
     autoplay: false,
     speed: 1500,

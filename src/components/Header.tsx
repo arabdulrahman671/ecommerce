@@ -8,12 +8,16 @@ import {
   Bars4Icon,
 } from "@heroicons/react/24/solid";
 import { useMediaQuery } from "react-responsive";
-import { Typography } from "@material-tailwind/react";
+import { Button, IconButton, Typography } from "@material-tailwind/react";
+import { SideMenu } from "./SideMenu";
 import Link from "next/link";
 export const Header = () => {
-  const isMobile = true;
+  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
   const [input, setinput] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const openDrawer = () => setOpen(true);
+  const closeDrawer = () => setOpen(false);
   const handleScroll = () => {
     let scrollTop = window.scrollY;
     if (scrollTop > 100) setIsScrolled(true);
@@ -29,6 +33,7 @@ export const Header = () => {
 
   return (
     <div className="flex h-[0px] flex-col align-middle items-center w-auto sticky top-0 z-50 ">
+      <SideMenu isDrawerOpen={open} closeDrawer={closeDrawer} />
       <div
         className={`flex flex-row justify-center bg-blue-gray-900  
         ${!isScrolled ? "md:w-[1024px]" : "min-w-full"}
@@ -47,7 +52,16 @@ export const Header = () => {
         }  flex flex-row justify-between space-x-3 items-center p-4  shadow-md transition-all duration-1000 ease-in-out`}
       >
         <div className="h-6 flex flex-row items-center ">
-          {<Bars4Icon className="h-6 pr-5" />}
+          {isMobile && (
+            <IconButton
+              variant="text"
+              color="blue-gray"
+              onClick={openDrawer}
+              className="m-0 p-0 "
+            >
+              {<Bars4Icon className="h-6 p-0" />}
+            </IconButton>
+          )}
           <div className="h-6 w-20 my-auto items-center relative cursor-pointer">
             <Image
               src="/vercel.svg"
@@ -60,16 +74,16 @@ export const Header = () => {
         </div>
         {!isMobile && (
           <div className="flex flex-row  pl-5 justify-start">
-            <Typography className="pr-2  hover:text-green-800 font-bold text-lg">
+            <Typography className="pr-2  hover:text-green-800 font-bold text-sm">
               <Link href={"/"}>HELLOW</Link>
             </Typography>
-            <Typography className="pr-2  hover:text-green-800 font-bold text-lg">
+            <Typography className="pr-2  hover:text-green-800 font-bold text-sm">
               <Link href={"/"}>HELLOW</Link>
             </Typography>
-            <Typography className="pr-2  hover:text-green-800 font-bold text-lg">
+            <Typography className="pr-2  hover:text-green-800 font-bold text-sm">
               <Link href={"/"}>HELLOW</Link>
             </Typography>
-            <Typography className="pr-2  hover:text-green-800 font-bold text-lg">
+            <Typography className="pr-2  hover:text-green-800 font-bold text-sm">
               <Link href={"/"}>HELLOW</Link>
             </Typography>
           </div>
