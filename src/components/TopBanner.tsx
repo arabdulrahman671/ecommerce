@@ -4,6 +4,7 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useRouter } from "next/router";
 
 interface Slide {
   uri: string;
@@ -13,6 +14,7 @@ interface Slide {
 }
 
 const Slide = ({ uri, head, focus, footer }: Slide) => {
+  const router = useRouter();
   return (
     <div className={`w-full h-[500px] relative flex flex-col `}>
       <Image
@@ -33,7 +35,10 @@ const Slide = ({ uri, head, focus, footer }: Slide) => {
         <Typography className="text-white font-extralight text-[20px] md:text-[30px] uppercase text-center">
           {footer}
         </Typography>
-        <Button className="bg-white text-black capitalize hover:bg-green-800 rounded-full hover:text-white mt-5">
+        <Button
+          onClick={() => router.replace("products/name-of-a-food")}
+          className="bg-white text-black capitalize hover:bg-green-800 rounded-full hover:text-white mt-5"
+        >
           Shop Now
         </Button>
       </div>

@@ -12,17 +12,17 @@ interface Slide {
 
 const Slide = ({ uri, title }: Slide) => {
   return (
-    <div className={`w-full`}>
-      <div className="h-14 relative">
+    <div className={`w-full flex flex-col justify-center items-center`}>
+      <div className="h-14 relative rounded-full overflow-hidden w-14">
         <Image
           src={uri}
           layout="fill"
-          objectFit="contain"
+          objectFit="cover"
           // objectPosition="left"
           alt="logo"
         />
       </div>
-      <Typography className="font-extralight text-sm text-center uppercase">
+      <Typography className="font-extralight text-sm text-center">
         {title}
       </Typography>
     </div>

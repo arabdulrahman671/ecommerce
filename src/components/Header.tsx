@@ -11,6 +11,7 @@ import { useMediaQuery } from "react-responsive";
 import { Button, IconButton, Typography } from "@material-tailwind/react";
 import { SideMenu } from "./SideMenu";
 import Link from "next/link";
+import { useRouter } from "next/router";
 export const Header = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
   const [input, setinput] = useState("");
@@ -18,6 +19,8 @@ export const Header = () => {
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
+  const router = useRouter();
+
   const handleScroll = () => {
     let scrollTop = window.scrollY;
     if (scrollTop > 100) setIsScrolled(true);
@@ -36,7 +39,7 @@ export const Header = () => {
       <SideMenu isDrawerOpen={open} closeDrawer={closeDrawer} />
       <div
         className={`flex flex-row justify-center bg-blue-gray-900  
-        ${!isScrolled ? "md:w-[1024px]" : "min-w-full"}
+        ${!isScrolled ? "md:w-[800px] lg:w-[1024px]" : "min-w-full"}
          pt-1 transition-all duration-1000 ease-in-out`}
       >
         {!isScrolled && (
@@ -48,7 +51,7 @@ export const Header = () => {
       </div>
       <div
         className={`bg-white ${
-          !isScrolled ? "md:w-[1024px]" : "min-w-full"
+          !isScrolled ? "md:w-[800px] lg:w-[1024px]" : "min-w-full"
         }  flex flex-row justify-between space-x-3 items-center p-4  shadow-md transition-all duration-1000 ease-in-out`}
       >
         <div className="h-6 flex flex-row items-center ">
@@ -69,6 +72,7 @@ export const Header = () => {
               objectFit="contain"
               // objectPosition="left"
               alt="logo"
+              onClick={() => router.replace("/")}
             />
           </div>
         </div>
